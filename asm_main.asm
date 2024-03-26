@@ -12,6 +12,7 @@ asm_main:
     add rbp, 16
     add rbp, 8
 
+    ; Y[i] = X[i-3] + X[i-2] + X[i-1] + X[i] + X[i+1] + X[i+2] + X[i+3]
     ; delete, testing module 9 video
     xor rax, rax
     mov eax, ecx
