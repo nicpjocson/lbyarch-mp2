@@ -1,4 +1,6 @@
-;section .data
+%include "io64.inc"
+section .data
+ya dd 0.0
 segment .text
     bits 64
     ;default rel
@@ -6,26 +8,40 @@ segment .text
     global asm_main
 
 asm_main:
-    push rsi
-    push rbp
-    mov rbp, rsp
-    add rbp, 16
-    add rbp, 8
-
-    ; Y[i] = X[i-3] + X[i-2] + X[i-1] + X[i] + X[i+1] + X[i+2] + X[i+3]
-    ; delete, testing module 9 video
-    xor rax, rax
-    mov eax, ecx
-    add eax, edx
-    add eax, r8d
-    add eax, r9d
-    add esi, [rbp+32]
-    add eax, esi
-    add esi, [rbp+40]
-    add eax, esi
-    mov esi, [rbp+48]
-    add eax, esi
+    lea rax, [rsp+8]     ; Load pointer to X into eax
+    lea rbx, [rsp+12]    ; Load pointer to Y into ebx
+    mov rcx, [rsp+16]    ; Load n into ecx
     
-    pop rbp
-    pop rsi
+    sub rcx, 6 
+    add rax, 12
+    
+    movss xmm7, [ya]
+    ; start loop in the 4th element
+stencil_kernel:
+    cmp ecx, 0
+    jz fin
+    movss xmm0, [rax - 12] ; Gte values [x-3]
+    movss xmm1, [rax - 8] ; [x-2]
+    movss xmm2, [rax - 4] ; [x-1]
+    movss xmm3, [rax] ; [x]
+    movss xmm4, [rax + 4] ; [x+1]
+    movss xmm5, [rax + 8] ; [x+2]
+    movss xmm6, [rax + 12] ; [x+3]
+    
+    ; Do the thing
+    addss xmm7, xmm0
+    addss xmm7, xmm1
+    addss xmm7, xmm2
+    addss xmm7, xmm3
+    addss xmm7, xmm4
+    addss xmm7, xmm5
+    addss xmm7, xmm6
+    movss [ebx], xmm7
+    
+    subss xmm7, xmm7
+    add rax, 4
+    add rbx, 4
+    dec rcx
+    jmp stencil_kernel
+fin: NOP
     ret
