@@ -1,8 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <windows.h>
+#include <time.h>
 
-extern int asm_main(/*int a1, int a2, int a3, int a4, int a5, int a6, int a7*/);
+extern void asm_main(float* X, float* Y, int n);
 
 void stencil_kernel(float* X, float* Y, int n) {
     for (int i = 3; i < n - 3; i++) {
@@ -37,11 +38,12 @@ float* allocateMemory(int n) {
 }
 
 int main(int argc, char* argv[]) {
-    int n; // Vector Length
+    time_t begin, end;
+    int n = 8; // Vector Length
     float* X, * Y;
 
     printf("Input vector length: ");
-    scanf("%d", &n);
+    //scanf("%d", &n);
 
     X = allocateMemory(n);
     Y = allocateMemory(n);
@@ -52,19 +54,28 @@ int main(int argc, char* argv[]) {
     }
 
     // C version
+    time(&begin);
     stencil_kernel(X, Y, n);
+    time(&end);
+    time_t elapsed = end - begin;
 
     // Output: store result in vector Y.
     // Display the result of 1st ten elements of vector Y for all versions of kernel (i.e., C and x86-64).
     printf("C version Output: ");
     printOutput(Y, n);
-
+    printf("\nC Version Execution Time: %ld seconds", elapsed);
     // Assembly Version
     free(Y);
     Y = allocateMemory(n);
-;   // ans = asm_main();
-    printf("x86 - 64 Version Output: ");
+
+    time(&begin);
+;   asm_main(X, Y, n);
+    time(&end);
+    time_t elapsed = end - begin;
+
+    printf("\n\nx86-64 Version Output: ");
     printOutput(Y, n);
+    printf("\nx86-64Version Execution Time: %ld seconds", elapsed);
 
     free(X);
     free(Y);
