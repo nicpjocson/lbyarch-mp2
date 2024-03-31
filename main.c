@@ -42,12 +42,17 @@ int main(int argc, char* argv[]) {
     int n; // Vector Length
     float* X, * Y;
 
-    // TODO: Add minimum vector length
-    printf("Input vector length: ");
-    if (scanf_s("%d", &n) != 1) {
-        printf("Error reading input.\n");
-        exit(1);
-    }
+    // TODO: Add minimum vector length > 6
+    do {
+        printf("Input vector length: ");
+        if (scanf_s("%d", &n) != 1) {
+            printf("Error reading input.\n");
+            exit(1);
+        }
+        if (n <= 6) {
+            printf("Error: Input must be greater than 6.\n");
+        }
+    } while (n <= 6);
     X = allocateMemory(n);
     Y = allocateMemory(n);
 
