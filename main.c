@@ -23,7 +23,10 @@ void printOutput(float* Y, int n) {
     }
 
     for (int i = 0; i < val; i++) {
-        printf("%.2f ", Y[i]);
+        printf("%.2f", Y[i]);
+        if (i < val - 1) {
+            printf(", ");
+        }
     }
     printf("\n");
 }
