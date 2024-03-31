@@ -50,7 +50,7 @@ int main(int argc, char* argv[]) {
 
     // Initialize
     for (int i = 0; i < n; i++) {
-        X[i] = i + 1;
+        X[i] = i + 1.0f;
     }
 
     // C version
@@ -63,7 +63,7 @@ int main(int argc, char* argv[]) {
     // Display the result of 1st ten elements of vector Y for all versions of kernel (i.e., C and x86-64).
     printf("C version Output: ");
     printOutput(Y, n);
-    printf("\nC Version Execution Time: %ld seconds", elapsed);
+    printf("\nC Version Execution Time: %lld seconds", elapsed);
     // Assembly Version
     free(Y);
     Y = allocateMemory(n);
@@ -71,11 +71,11 @@ int main(int argc, char* argv[]) {
     time(&begin);
 ;   asm_main(X, Y, n);
     time(&end);
-    time_t elapsed = end - begin;
+    elapsed = end - begin;
 
     printf("\n\nx86-64 Version Output: ");
     printOutput(Y, n);
-    printf("\nx86-64Version Execution Time: %ld seconds", elapsed);
+    printf("\nx86-64Version Execution Time: %lld seconds", elapsed);
 
     free(X);
     free(Y);
