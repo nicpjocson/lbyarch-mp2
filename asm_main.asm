@@ -9,13 +9,12 @@ asm_main:
     push rbp
     mov rbp, rsp
 
-    mov rdi, [rbp+8]
-    mov rsi, [rbp+16] 
-    ;mov r8d, [rbp+24]
+    mov ebx, ecx
+    mov rdi, rdx
+    mov rsi, r8
 
-    ;sub r8d, 6
+    sub ebx, 6
     add rdi, 12
-    mov r8d, 2
 stencil_kernel:    
     movss xmm0, [rdi - 12]
     movss xmm1, [rdi - 8]
@@ -23,14 +22,23 @@ stencil_kernel:
     movss xmm3, [rdi]
     movss xmm4, [rdi + 4]
     movss xmm5, [rdi + 8]
-    
 
-    movss [rsi], xmm3
-    dec r8d
+    addss xmm0, xmm1
+
+    movss xmm1, [rdi + 12]
+    addss xmm0, xmm1
+
+    addss xmm0, xmm2
+    addss xmm0, xmm3
+    addss xmm0, xmm4
+    addss xmm0, xmm5
+    
+    movss [rsi], xmm0
+    dec ebx
     add rdi, 4
     add rsi, 4
 
-    cmp r8d, 0
+    cmp ebx, 0
     jnz stencil_kernel
 
     pop rbp

@@ -3,9 +3,9 @@
 #include <windows.h>
 #include <time.h>
 
-extern void asm_main(float* X, float* Y, int n);
+extern void asm_main(int n, float* X, float* Y);
 
-void stencil_kernel(float* X, float* Y, int n) {
+void stencil_kernel(int n, float* X, float* Y) {
     for (int i = 3; i < n - 3; i++) {
         float sum = 0;
         for (int j = i - 3; j <= i + 3; j++) {
@@ -17,12 +17,12 @@ void stencil_kernel(float* X, float* Y, int n) {
 }
 
 void printOutput(float* Y, int n) {
-    n -= 6;
-    if (n > 10) {
-        n = 10;
+    int val = n - 6;
+    if (val > 10) {
+        val = 10;
     }
 
-    for (int i = 0; i < n; i++) {
+    for (int i = 0; i < val; i++) {
         printf("%.2f ", Y[i]);
     }
     printf("\n");
@@ -42,7 +42,6 @@ int main(int argc, char* argv[]) {
     int n; // Vector Length
     float* X, * Y;
 
-    // TODO: Add minimum vector length > 6
     do {
         printf("Input vector length: ");
         if (scanf_s("%d", &n) != 1) {
@@ -56,6 +55,7 @@ int main(int argc, char* argv[]) {
     X = allocateMemory(n);
     Y = allocateMemory(n);
 
+    printOutput(Y, n);
     // Initialize
     for (int i = 0; i < n; i++) {
         X[i] = i + 1.0f;
@@ -63,7 +63,7 @@ int main(int argc, char* argv[]) {
 
     // C version
     begin = clock();
-    stencil_kernel(X, Y, n);
+    stencil_kernel(n, X, Y);
     end = clock();
     double elapsed = (double)(end - begin) / CLOCKS_PER_SEC;
 
@@ -75,15 +75,16 @@ int main(int argc, char* argv[]) {
     // Assembly Version
     free(Y);
     Y = allocateMemory(n);
+    printf("%p %p", X, Y);
 
     printf("\n\nx86-64 Version Output: ");
-    begin = clock();
-;   asm_main(X, Y, n);
-    end = clock();
-    elapsed = (double)(end - begin) / CLOCKS_PER_SEC;
+    //begin = clock();
+;   asm_main(n, X, Y);
+    //end = clock();
+    //elapsed = (double)(end - begin) / CLOCKS_PER_SEC;
 
     printOutput(Y, n);
-    printf("\nx86-64Version Execution Time: %.4lf seconds", elapsed);
+    //printf("\nx86-64Version Execution Time: %.4lf seconds", elapsed);
 
     free(X);
     free(Y);
