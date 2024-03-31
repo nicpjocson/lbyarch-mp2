@@ -7,3 +7,6 @@ a.) Github readme containing the following (debug and release mode; C and x86-64
        ii.) Take a screenshot of the program output with the correctness check (C).
 
        iii.) Take a screenshot of the program output, including the correctness check (x86-64).
+
+Download NASM
+Add NASM to PATH environment variable
