@@ -1,4 +1,3 @@
-%include "io64.inc"
 section .data
 ya dd 0.0
 segment .text
