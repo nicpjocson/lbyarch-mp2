@@ -1,4 +1,3 @@
-section .data
 section .text
 bits 64
 default rel

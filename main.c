@@ -45,6 +45,8 @@ int main(int argc, char* argv[]) {
     int n; // Vector Length
     float* X, * Y;
 
+    printf("----- 1D Stencil of Vector X -----\n");
+
     do {
         printf("Input vector length: ");
         if (scanf_s("%d", &n) != 1) {
@@ -59,8 +61,11 @@ int main(int argc, char* argv[]) {
     Y = allocateMemory(n);
 
     for (int i = 0; i < n; i++) {
-        X[i] = i + 1.2f; // Initialize X
+        X[i] = i + 1.0f; // Initialize X
     }
+
+    printf("X -> ");
+    printOutput(X, n);
 
     // C version
     begin = clock();
@@ -68,7 +73,7 @@ int main(int argc, char* argv[]) {
     end = clock();
     double elapsed = (double)(end - begin) / CLOCKS_PER_SEC;
 
-    printf("C version Output: ");
+    printf("C Version Output:\nY -> ");
     printOutput(Y, n);
     printf("\nC Version Execution Time: %.4lf seconds", elapsed);
     
@@ -76,14 +81,14 @@ int main(int argc, char* argv[]) {
     free(Y);
     Y = allocateMemory(n);
 
-    printf("\n\nx86-64 Version Output: ");
+    printf("\n\nx86-64 Version Output:\nY -> ");
     begin = clock();
 ;   asm_main(n, X, Y);
     end = clock();
     elapsed = (double)(end - begin) / CLOCKS_PER_SEC;
 
     printOutput(Y, n);
-    printf("\nx86-64Version Execution Time: %.4lf seconds", elapsed);
+    printf("\nx86-64 Version Execution Time: %.4lf seconds\n", elapsed);
 
     free(X);
     free(Y);
