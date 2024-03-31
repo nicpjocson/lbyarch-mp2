@@ -28,6 +28,9 @@ void printOutput(float* Y, int n) {
             printf(", ");
         }
     }
+    if (n - 6 > 10) {
+        printf(" ...");
+    }
     printf("\n");
 }
 
