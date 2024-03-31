@@ -39,12 +39,14 @@ float* allocateMemory(int n) {
 
 int main(int argc, char* argv[]) {
     time_t begin, end;
-    int n = 8; // Vector Length
+    int n; // Vector Length
     float* X, * Y;
 
     printf("Input vector length: ");
-    //scanf("%d", &n);
-
+    if (scanf_s("%d", &n) != 1) {
+        printf("Error reading input.\n");
+        exit(1);
+    }
     X = allocateMemory(n);
     Y = allocateMemory(n);
 
