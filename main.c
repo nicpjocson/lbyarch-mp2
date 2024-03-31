@@ -17,19 +17,19 @@ void stencil_kernel(float* X, float* Y, int n) {
 }
 
 void printOutput(float* Y, int n) {
+    n -= 6;
     if (n > 10) {
         n = 10;
     }
 
     for (int i = 0; i < n; i++) {
-        if (Y[i] != 0) {
-            printf("%.2lf ", Y[i]);
-        }
+        printf("%.2lf ", Y[i]);
     }
+    printf("\n");
 }
 
 float* allocateMemory(int n) {
-    float* arr = (float*)malloc(n * sizeof(float));
+    float* arr = (float*)calloc(n, sizeof(float));
     if (arr == NULL) {
         printf("Memory allocation failed\n");
         exit(1);
@@ -42,6 +42,7 @@ int main(int argc, char* argv[]) {
     int n; // Vector Length
     float* X, * Y;
 
+    // TODO: Add minimum vector length
     printf("Input vector length: ");
     if (scanf_s("%d", &n) != 1) {
         printf("Error reading input.\n");
@@ -70,12 +71,12 @@ int main(int argc, char* argv[]) {
     free(Y);
     Y = allocateMemory(n);
 
+    printf("\n\nx86-64 Version Output: ");
     time(&begin);
 ;   asm_main(X, Y, n);
     time(&end);
     elapsed = end - begin;
 
-    printf("\n\nx86-64 Version Output: ");
     printOutput(Y, n);
     printf("\nx86-64Version Execution Time: %lld seconds", elapsed);
 
