@@ -1,6 +1,6 @@
 # LBYARCH x86-to-C interface programming project
 
-1.) Add NASM to PATH environment variable
+1.) Add NASM to PATH environment variable  
 2.) Set 'Solution Platforms' to 'x64'
 
 ## Debug Mode
