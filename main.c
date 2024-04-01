@@ -29,7 +29,8 @@ void printOutput(float* Y, int n) {
         }
     }
     if (n - 6 > 10) {
-        printf(" ...");
+        printf(" ... ");
+        printf("%.2f", Y[n - 1]);
     }
     printf("\n");
 }
