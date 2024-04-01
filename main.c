@@ -85,7 +85,7 @@ int main(int argc, char* argv[]) {
 
     printf("\n\nx86-64 Version Output:\nY -> ");
     begin = clock();
-;   asm_main(n, X, Y);
+    asm_main(n, X, Y);
     end = clock();
     elapsed = (double)(end - begin) / CLOCKS_PER_SEC;
 
