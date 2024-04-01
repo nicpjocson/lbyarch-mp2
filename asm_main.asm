@@ -1,8 +1,8 @@
 section .text
 bits 64
 default rel
-extern printf
 global asm_main
+extern printf
 
 asm_main:
     push rbp
@@ -11,6 +11,10 @@ asm_main:
     mov ebx, ecx
     mov rdi, rdx
     mov rsi, r8
+
+    push rbx
+    push rdi
+    push rsi
 
     sub ebx, 6
     add rdi, 12
@@ -40,5 +44,8 @@ stencil_kernel:
     cmp ebx, 0
     jnz stencil_kernel
 
+    pop rsi
+    pop rdi
+    pop rbx
     pop rbp
     ret
