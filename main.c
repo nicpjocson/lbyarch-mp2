@@ -43,12 +43,10 @@ float* allocateMemory(int n) {
 }
 
 int main(int argc, char* argv[]) {
-    clock_t begin, end;
     int n; // Vector Length
     float* X, * Y;
 
     printf("----- 1D Stencil of Vector X -----\n");
-
     do {
         printf("Input vector length: ");
         if (scanf_s("%d", &n) != 1) {
@@ -59,41 +57,31 @@ int main(int argc, char* argv[]) {
             printf("Error: Input must be greater than 6.\n");
         }
     } while (n <= 6);
+
     X = allocateMemory(n);
     Y = allocateMemory(n);
 
     for (int i = 0; i < n; i++) {
-        X[i] = i + 1.0f; // Initialize X (TODO: maybe randomize?)
+        X[i] = i + 1.0f; // Initialize X
     }
 
     printf("X -> ");
     printArray(X, n);
 
     // C version
-    begin = clock();
     stencil_kernel(n, X, Y);
-    end = clock();
-    double elapsed = (double)(end - begin) / CLOCKS_PER_SEC;
-
     printf("C Version Output:\nY -> ");
     printArray(Y, n-6);
-    printf("\nC Version Execution Time: %.4lf seconds", elapsed);
     
-    // Assembly Version
     free(Y);
     Y = allocateMemory(n);
 
+    // Assembly Version
     printf("\n\nx86-64 Version Output:\nY -> ");
-    begin = clock();
     asm_main(n, X, Y);
-    end = clock();
-    elapsed = (double)(end - begin) / CLOCKS_PER_SEC;
-
     printArray(Y, n-6);
-    printf("\nx86-64 Version Execution Time: %.4lf seconds\n", elapsed);
 
     free(X);
     free(Y);
-
     return 0;
 }
