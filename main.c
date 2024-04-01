@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <windows.h>
-#include <time.h>
 
 extern float * asm_main(int n, float* X, float* Y);
 
