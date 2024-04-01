@@ -3,7 +3,7 @@
 #include <windows.h>
 #include <time.h>
 
-extern void asm_main(int n, float* X, float* Y);
+extern float * asm_main(int n, float* X, float* Y);
 
 void stencil_kernel(int n, float* X, float* Y) {
     for (int i = 3; i < n - 3; i++) {
@@ -78,7 +78,7 @@ int main(int argc, char* argv[]) {
 
     // Assembly Version
     printf("\n\nx86-64 Version Output:\nY -> ");
-    asm_main(n, X, Y);
+    Y = asm_main(n, X, Y);
     printArray(Y, n-6);
 
     free(X);
