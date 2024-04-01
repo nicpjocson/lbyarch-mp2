@@ -4,25 +4,25 @@
 2.) Set 'Solution Platforms' to 'x64'
 
 ## Debug Mode
-Set 'Solution Configurations' to 'Debug'
+1.) Set 'Solution Configurations' to 'Debug'
 
 ## Release Mode
-Set 'Solution Configurations' to 'Release'
+1.) Set 'Solution Configurations' to 'Release'
 
 ## Requirements
 ### Comparative execution time and short analysis of the performance of the kernels
 #### Vector size n = 2<sup>20</sup>
-C Average Execution Time: 0.0155 seconds
+C Average Execution Time: 0.0155 seconds  
 x86-64 Average Execution Time: 0.0014 seconds
 
 #### Vector size n = 2<sup>24</sup>
-C Average Execution Time: 0.2459 seconds
+C Average Execution Time: 0.2459 seconds  
 x86-64 Average Execution Time: 0.0201 seconds
 
 #### Vector size n = 2<sup>30</sup>
-C Average Execution Time: 15.8285 seconds
-x86-64 Average Execution Time: 1.9187 seconds
-
+C Average Execution Time: 15.8285 seconds  
+x86-64 Average Execution Time: 1.9187 seconds  
+  
 * Note: average execution times are truncated to 4 decimal places
 
 ### Screenshot of the program output with the correctness check (C)
