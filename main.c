@@ -16,21 +16,19 @@ void stencil_kernel(int n, float* X, float* Y) {
     printf("\n");
 }
 
-void printOutput(float* Y, int n) {
-    int val = n - 6;
-    if (val > 10) {
+void printArray(float* arr, int n) {
+    int val = n;
+    if (n > 10) {
         val = 10;
     }
-
     for (int i = 0; i < val; i++) {
-        printf("%.2f", Y[i]);
+        printf("%.2f", arr[i]);
         if (i < val - 1) {
             printf(", ");
         }
     }
-    if (n - 6 > 10) {
+    if (n > 10) {
         printf(" ... ");
-        printf("%.2f", Y[n - 1]);
     }
     printf("\n");
 }
@@ -65,11 +63,11 @@ int main(int argc, char* argv[]) {
     Y = allocateMemory(n);
 
     for (int i = 0; i < n; i++) {
-        X[i] = i + 1.0f; // Initialize X
+        X[i] = i + 1.0f; // Initialize X (TODO: maybe randomize?)
     }
 
     printf("X -> ");
-    printOutput(X, n);
+    printArray(X, n);
 
     // C version
     begin = clock();
@@ -78,7 +76,7 @@ int main(int argc, char* argv[]) {
     double elapsed = (double)(end - begin) / CLOCKS_PER_SEC;
 
     printf("C Version Output:\nY -> ");
-    printOutput(Y, n);
+    printArray(Y, n-6);
     printf("\nC Version Execution Time: %.4lf seconds", elapsed);
     
     // Assembly Version
@@ -91,7 +89,7 @@ int main(int argc, char* argv[]) {
     end = clock();
     elapsed = (double)(end - begin) / CLOCKS_PER_SEC;
 
-    printOutput(Y, n);
+    printArray(Y, n-6);
     printf("\nx86-64 Version Execution Time: %.4lf seconds\n", elapsed);
 
     free(X);
