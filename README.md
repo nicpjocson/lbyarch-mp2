@@ -47,12 +47,17 @@ x86-64 kernel
 The x86-64 kernel observed an execution time approximately 10x lesser than the C kernel, suggesting a faster execution time.  
 
 ## Screenshots of the program output with correctness check
-### C kernel vs. x86-64 kernel
-Vector size n = 2<sup>20</sup>  
-![Alt text](https://i.imgur.com/tW9s40V.png)
-  
-Vector size n = 2<sup>24</sup>  
-![Alt text](https://i.imgur.com/LsgvgpH.png)
-  
-Vector size n = 2<sup>30</sup>  
-![Alt text](https://i.imgur.com/6sLHPXN.png)
+Process: Y[i] = X[i-3] + X[i-2] + X[i-1] + X[i] + X[i+1] + X[i+2] + X[i+3]
+Y[0] = 1 + 2 + 3 + 4 + 5 + 6 + 7 = 28
+Y[1] = 2 + 3 + 4 + 5 + 6 + 7 + 8 = 35
+Y[2] = 3 + 4 + 5 + 6 + 7 + 8 + 9 = 42
+Y[3] = 4 + 5 + 6 + 7 + 8 + 9 + 10 = 49
+Output: 28, 35, 42, 49
+
+### C kernel
+Vector size n = 10  
+![Alt text](https://imgur.com/i8Bc54y)
+
+### x86-64 kernel
+Vector size n = 10  
+![Alt text](https://imgur.com/5lYwzsR)
