@@ -49,3 +49,5 @@ The x86-64 kernel observed an execution time approximately 10x lesser than the C
 ## Screenshots of the program output with correctness check
 ### C kernel vs. x86-64 kernel
 ![Alt text](https://i.imgur.com/tW9s40V.png)
+![Alt text](https://i.imgur.com/LsgvgpH.png)
+![Alt text](https://i.imgur.com/6sLHPXN.png)
