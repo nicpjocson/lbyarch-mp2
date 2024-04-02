@@ -1,31 +1,51 @@
-# LBYARCH x86-to-C interface programming project
-
+# Kernel to perform 1-D stencil of vector X place the result in vector Y
 1.) Add NASM to PATH environment variable  
-2.) Set 'Solution Platforms' to 'x64'
+2.) Set 'Solution Platforms' to 'x64'  
+  
+The program was run 30 times to get the average execution time for vector size n = 2<sup>20</sup>, 2<sup>24</sup>, and 2<sup>30</sup> of each kernel version. The average execution times are truncated to 4 decimal places.
 
-## Debug Mode
+## Performance of the Kernels in Debug Mode
 1.) Set 'Solution Configurations' to 'Debug'
 
-## Release Mode
+### Comparative execution time
+| C kernel                                     |
+| Vector size (n) | Average execution time (s) |
+| --------------- | -------------------------- |
+| 2<sup>20</sup>  | 0.0155                     |
+| 2<sup>24</sup>  | 0.2459                     |
+| 2<sup>30</sup>  | 15.8285                    |
+
+| x86-64 kernel                                |
+| Vector size (n) | Average execution time (s) |
+| --------------- | -------------------------- |
+| 2<sup>20</sup>  | 0.0014                     |
+| 2<sup>24</sup>  | 0.0201                     |
+| 2<sup>30</sup>  | 1.9187                     | 
+
+### Short analysis
+The x86-64 kernel observed an execution time approximately 10x lesser than the C kernel, suggesting a faster execution time.
+
+## Performance of the Kernels in Release Mode
 1.) Set 'Solution Configurations' to 'Release'
 
-## Requirements
-### Comparative execution time and short analysis of the performance of the kernels
-Note: average execution times are truncated to 4 decimal places  
-#### Vector size n = 2<sup>20</sup>
-C Average Execution Time: 0.0155 seconds  
-x86-64 Average Execution Time: 0.0014 seconds
+### Comparative execution time
+| C kernel                                     |
+| Vector size (n) | Average execution time (s) |
+| --------------- | -------------------------- |
+| 2<sup>20</sup>  | 0.0155                     |
+| 2<sup>24</sup>  | 0.2459                     |
+| 2<sup>30</sup>  | 15.8285                    |
 
-#### Vector size n = 2<sup>24</sup>
-C Average Execution Time: 0.2459 seconds  
-x86-64 Average Execution Time: 0.0201 seconds
+| x86-64 kernel                                |
+| Vector size (n) | Average execution time (s) |
+| --------------- | -------------------------- |
+| 2<sup>20</sup>  | 0.0014                     |
+| 2<sup>24</sup>  | 0.0201                     |
+| 2<sup>30</sup>  | 1.9187                     | 
 
-#### Vector size n = 2<sup>30</sup>
-C Average Execution Time: 15.8285 seconds  
-x86-64 Average Execution Time: 1.9187 seconds
+### Short analysis
+The x86-64 kernel observed an execution time approximately 10x lesser than the C kernel, suggesting a faster execution time.  
 
-### Screenshot of the program output with the correctness check (C)
-![Alt text](https://i.imgur.com/oMdVph0.jpeg)
-
-### Screenshot of the program output, including the correctness check (x86-64)
-![Alt text](https://i.imgur.com/oMdVph0.jpeg)
+## Screenshots of the program output with correctness check
+### C kernel vs. x86-64 kernel
+![Alt text](https://imgur.com/tW9s40V)
