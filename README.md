@@ -1,5 +1,5 @@
 # Kernel to perform 1-D stencil of vector X place the result in vector Y
-The program was run 30 times to get the average execution time for vector size n = 2<sup>20</sup>, 2<sup>24</sup>, and 2<sup>30</sup> of each kernel version. The average execution times are truncated to 4 decimal places.
+The program was run 30 times to get the average execution time for vector size n = 2<sup>20</sup>, 2<sup>24</sup>, and 2<sup>30</sup> of each kernel version. The average execution times are rounded to 4 decimal places.
 
 ## Performance of the Kernels in Debug Mode
 1.) Set 'Solution Configurations' to 'Debug'
@@ -9,14 +9,14 @@ C kernel
 | Vector size (n) | Average execution time (s) |
 | --------------- | -------------------------- |
 | 2<sup>20</sup>  | 0.0155                     |
-| 2<sup>24</sup>  | 0.1004					   |
+| 2<sup>24</sup>  | 0.1004					           |
 | 2<sup>30</sup>  | 6.7896                     |
 
 x86-64 kernel  
 | Vector size (n) | Average execution time (s) |
 | --------------- | -------------------------- |
 | 2<sup>20</sup>  | 0.0014                     |
-| 2<sup>24</sup>  | 0.0147                  |
+| 2<sup>24</sup>  | 0.0147                     |
 | 2<sup>30</sup>  | 1.0488                     |
 
 ## Performance of the Kernels in Release Mode
