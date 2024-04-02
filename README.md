@@ -47,10 +47,10 @@ x86-64 kernel
 The x86-64 kernel observed an execution time approximately 10x lesser than the C kernel, suggesting a faster execution time.  
 
 ## Screenshots of the program output with correctness check
-Process: Y[i] = X[i-3] + X[i-2] + X[i-1] + X[i] + X[i+1] + X[i+2] + X[i+3]
-Y[0] = 1 + 2 + 3 + 4 + 5 + 6 + 7 = 28
-Y[1] = 2 + 3 + 4 + 5 + 6 + 7 + 8 = 35
-Y[2] = 3 + 4 + 5 + 6 + 7 + 8 + 9 = 42
+Process: Y[i] = X[i-3] + X[i-2] + X[i-1] + X[i] + X[i+1] + X[i+2] + X[i+3] <br>
+Y[0] = 1 + 2 + 3 + 4 + 5 + 6 + 7 = 28 <br>
+Y[1] = 2 + 3 + 4 + 5 + 6 + 7 + 8 = 35 <br> 
+Y[2] = 3 + 4 + 5 + 6 + 7 + 8 + 9 = 42 <br>
 Y[3] = 4 + 5 + 6 + 7 + 8 + 9 + 10 = 49
 Output: 28, 35, 42, 49
 
