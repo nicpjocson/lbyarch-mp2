@@ -56,7 +56,7 @@ Output: 28, 35, 42, 49
 
 ### C kernel
 Vector size n = 10  
-![Alt text](https://i.imgur.com/C72qSRT.png)
+![Alt text](https://i.imgur.com/lFBHSvN.png)
 
 ### x86-64 kernel
 Vector size n = 10  
