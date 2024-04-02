@@ -8,14 +8,14 @@ The program was run 30 times to get the average execution time for vector size n
 1.) Set 'Solution Configurations' to 'Debug'
 
 ### Comparative execution time
-| C kernel                                     |
+C kernel  
 | Vector size (n) | Average execution time (s) |
 | --------------- | -------------------------- |
 | 2<sup>20</sup>  | 0.0155                     |
 | 2<sup>24</sup>  | 0.2459                     |
 | 2<sup>30</sup>  | 15.8285                    |
 
-| x86-64 kernel                                |
+x86-64 kernel  
 | Vector size (n) | Average execution time (s) |
 | --------------- | -------------------------- |
 | 2<sup>20</sup>  | 0.0014                     |
@@ -29,14 +29,14 @@ The x86-64 kernel observed an execution time approximately 10x lesser than the C
 1.) Set 'Solution Configurations' to 'Release'
 
 ### Comparative execution time
-| C kernel                                     |
+C kernel  
 | Vector size (n) | Average execution time (s) |
 | --------------- | -------------------------- |
 | 2<sup>20</sup>  | 0.0155                     |
 | 2<sup>24</sup>  | 0.2459                     |
 | 2<sup>30</sup>  | 15.8285                    |
 
-| x86-64 kernel                                |
+x86-64 kernel  
 | Vector size (n) | Average execution time (s) |
 | --------------- | -------------------------- |
 | 2<sup>20</sup>  | 0.0014                     |
@@ -48,4 +48,4 @@ The x86-64 kernel observed an execution time approximately 10x lesser than the C
 
 ## Screenshots of the program output with correctness check
 ### C kernel vs. x86-64 kernel
-![Alt text](https://imgur.com/tW9s40V)
+![Alt text](https://i.imgur.com/tW9s40V.png)
