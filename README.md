@@ -1,7 +1,5 @@
 # Kernel to perform 1-D stencil of vector X place the result in vector Y
-1.) Add NASM to PATH environment variable  
-2.) Set 'Solution Platforms' to 'x64'  
-  
+
 The program was run 30 times to get the average execution time for vector size n = 2<sup>20</sup>, 2<sup>24</sup>, and 2<sup>30</sup> of each kernel version. The average execution times are truncated to 4 decimal places.
 
 ## Performance of the Kernels in Debug Mode
@@ -12,15 +10,15 @@ C kernel
 | Vector size (n) | Average execution time (s) |
 | --------------- | -------------------------- |
 | 2<sup>20</sup>  | 0.0155                     |
-| 2<sup>24</sup>  | 0.2459                     |
-| 2<sup>30</sup>  | 15.8285                    |
+| 2<sup>24</sup>  | 0.1004					   |
+| 2<sup>30</sup>  | 6.7896                     |
 
 x86-64 kernel  
 | Vector size (n) | Average execution time (s) |
 | --------------- | -------------------------- |
 | 2<sup>20</sup>  | 0.0014                     |
 | 2<sup>24</sup>  | 0.0201                     |
-| 2<sup>30</sup>  | 1.9187                     | 
+| 2<sup>30</sup>  | 1.0488                     |
 
 ### Short analysis
 The x86-64 kernel observed an execution time approximately 10x lesser than the C kernel, suggesting a faster execution time.
@@ -32,16 +30,16 @@ The x86-64 kernel observed an execution time approximately 10x lesser than the C
 C kernel  
 | Vector size (n) | Average execution time (s) |
 | --------------- | -------------------------- |
-| 2<sup>20</sup>  | 0.0155                     |
-| 2<sup>24</sup>  | 0.2459                     |
-| 2<sup>30</sup>  | 15.8285                    |
+| 2<sup>20</sup>  | 0.0030                     |
+| 2<sup>24</sup>  | 0.0381                     |
+| 2<sup>30</sup>  | 2.9050                     |
 
 x86-64 kernel  
 | Vector size (n) | Average execution time (s) |
 | --------------- | -------------------------- |
-| 2<sup>20</sup>  | 0.0014                     |
-| 2<sup>24</sup>  | 0.0201                     |
-| 2<sup>30</sup>  | 1.9187                     | 
+| 2<sup>20</sup>  | 0.0000                   |
+| 2<sup>24</sup>  | 0.0000                     |
+| 2<sup>30</sup>  | 0.0000               |
 
 ### Short analysis
 The x86-64 kernel observed an execution time approximately 10x lesser than the C kernel, suggesting a faster execution time.  
