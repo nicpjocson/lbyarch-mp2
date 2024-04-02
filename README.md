@@ -20,14 +20,11 @@ x86-64 kernel
 | 2<sup>24</sup>  | 0.0201                     |
 | 2<sup>30</sup>  | 1.0488                     |
 
-### Short analysis
-The x86-64 kernel observed an execution time approximately 10x lesser than the C kernel, suggesting a faster execution time.
-
 ## Performance of the Kernels in Release Mode
 1.) Set 'Solution Configurations' to 'Release'
 
 ### Comparative execution time
-C kernel  
+C kernel
 | Vector size (n) | Average execution time (s) |
 | --------------- | -------------------------- |
 | 2<sup>20</sup>  | 0.0030                     |
@@ -41,8 +38,8 @@ x86-64 kernel
 | 2<sup>24</sup>  | 0.0000                     |
 | 2<sup>30</sup>  | 0.0000               |
 
-### Short analysis
-The x86-64 kernel observed an execution time approximately 10x lesser than the C kernel, suggesting a faster execution time.  
+## Short analysis
+The two tables outline the comparative performance between the two kernels, one implemented in C and the other in x86-64 assembly, across vector n = 2<sup>20</sup>, 2<sup>24</sup>, and 2<sup>30</sup>. In both kernels, as the vector size increases, the average execution time also increases. This is expected due to the larger amount of data being processed. The notable differences between the two kernels is how the C kernel exhibits higher execution times across all vector sizes, with a significant spike in execution time observed for vector size 2<sup>30</sup>. On the other hand, the x86-64 kernel demonstrates consistently lower execution times across all vector sizes, suggesting a better performance compared to the C kernel. Overall, the data highlights the superior performance of the x86-64 kernel in terms of average execution time, indicating its efficiency in processing larger datasets compared to the C implementation.  
 
 ## Screenshots of the program output with correctness check
 Process: Y[i] = X[i-3] + X[i-2] + X[i-1] + X[i] + X[i+1] + X[i+2] + X[i+3] <br>
