@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <windows.h>
+#include <time.h>
 
 extern float * asm_main(int n, float* X, float* Y);
 
@@ -21,7 +22,7 @@ void printArray(float* arr, int n) {
         val = 10;
     }
     for (int i = 0; i < val; i++) {
-        printf("%.2f", arr[i]);
+        printf("%.4f", arr[i]);
         if (i < val - 1) {
             printf(", ");
         }
@@ -44,6 +45,7 @@ float* allocateMemory(int n) {
 int main(int argc, char* argv[]) {
     int n; // Vector Length
     float* X, * Y;
+    srand((unsigned int)time(NULL));
 
     printf("----- 1D Stencil of Vector X -----\n");
     do {
@@ -61,7 +63,7 @@ int main(int argc, char* argv[]) {
     Y = allocateMemory(n);
 
     for (int i = 0; i < n; i++) {
-        X[i] = i + 1.0f; // Initialize X
+        X[i] = (float)(rand() % 10000) / 10000.0; // Initialize X
     }
 
     printf("X -> ");
